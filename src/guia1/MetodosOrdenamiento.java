@@ -123,4 +123,68 @@ public class MetodosOrdenamiento {
             cambiar(i, posicionMenor(i));
         }
     }
+    
+    public void shell() { // PARA ARREGLOS NUMERICOS
+        int salto;
+        int aux; // Si fuera arreglo de números
+        boolean cambios;
+        for (salto = getNumElementos() / 2; salto != 0; salto /= 2) {
+            cambios = true;
+            while (cambios) { // Mientras se intercambie algún elemento
+                cambios = false;
+                for (int i = salto; i < getNumElementos(); i++) { // se da una pasada
+                    if (getVectorDatos(i-salto) > getVectorDatos(i)) {
+                        aux = getVectorDatos(i);
+                        setVectorDatos(i, getVectorDatos(i-salto));
+                        setVectorDatos(i-salto, aux);
+                        cambios = true;
+                    }
+                }
+            }
+        }
+    }
+    
+    
+     public void quickSort(int izq, int der) { // PARA ARREGLOS NUMERICOS
+        int pivote = getVectorDatos(izq); // tomamos primer elemento como pivote
+        //int pivote = A[izq]; // tomamos primer elemento como pivote
+        int i = izq; // i realiza la búsqueda de izquierda a derecha
+        int j = der; // j realiza la búsqueda de derecha a izquierda
+        int aux;
+
+        while (i < j) { // mientras no se crucen las búsquedas
+            while (getVectorDatos(i) <= pivote && i < j) {
+            //while (A[i] <= pivote && i < j) {
+                i++; // busca elemento mayor que pivote
+            }
+            while (getVectorDatos(j) > pivote) {
+            //while (A[j] > pivote) {
+                j--;         // busca elemento menor que pivote
+            }
+            if (i < j) {                      // si no se han cruzado                      
+                aux = getVectorDatos(i);                  // los intercambia
+                //aux = A[i];                  // los intercambia
+                setVectorDatos(i, getVectorDatos(j));
+                //A[i] = A[j];
+                setVectorDatos(j, aux);
+                //A[j] = aux;
+            }
+        }
+        
+        setVectorDatos(izq, getVectorDatos(j));
+        //A[izq] = A[j]; // se coloca el pivote en su lugar de forma que tendremos
+         setVectorDatos(j, pivote);
+        //A[j] = pivote; // los menores a su izquierda y los mayores a su derecha
+        if (izq < j - 1) {
+            quickSort(izq, j-1);
+            //quickSort(A, izq, j - 1); // ordenamos subarray izquierdo
+        }
+        if (j + 1 < der) {
+            quickSort(j+1, der);
+            //quickSort(A, j + 1, der); // ordenamos subarray derecho
+        }
+    }
+    
+    
+    
 }
