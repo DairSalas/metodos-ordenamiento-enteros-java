@@ -25,8 +25,8 @@ public class Guia1 {
         //Después de tener almacenados todos los datos del vector, en la variable de tipo cadena
         //(datosVector), se procede a visualizar los elementos con la ayuda de JOptionPane y el método
         //showMessageDialog.
-        JOptionPane.showMessageDialog(null, "============ ELEMENTOS DEL VECTOR============"+"\n"+datosVector);
- }
+        JOptionPane.showMessageDialog(null, "============ ELEMENTOS DEL VECTOR============" + "\n" + datosVector);
+    }
 
     /**
      * @param args the command line arguments
@@ -55,7 +55,7 @@ public class Guia1 {
         mostrarVector(ordenar); //Se llama al método para visualizar los elementos del vector.
 
         //Se implementa un menú de opciones para escoger con que método se quiere ordenar el vector.
-        int opcion = Integer.parseInt(JOptionPane.showInputDialog("====== Seleccione el Método de Ordenamiento == == == \n" + "1. Ordenamiento Burbuja \n" + "2. Ordenamiento por Intercambio \n" + "3. Ordenamiento por Seleccion \n"));
+        int opcion = Integer.parseInt(JOptionPane.showInputDialog("====== Seleccione el Método de Ordenamiento == == == \n" + "1. Ordenamiento Burbuja \n" + "2. Ordenamiento por Intercambio \n" + "3. Ordenamiento por Seleccion \n4. Ordenamiento shell \n5. Ordenamiento quick sort"));
         switch (opcion) {
             case 1:
                 ordenar.ordenarBurbuja();
@@ -69,6 +69,15 @@ public class Guia1 {
                 ordenar.ordenarSeleccion();
                 mostrarVector(ordenar);
                 break;
+            case 4:
+                ordenar.shell();
+                mostrarVector(ordenar);
+                break;
+            case 5:
+                ordenar.quickSort(0, numeroElementos-1);
+                mostrarVector(ordenar);
+                break;
+
             default:
                 JOptionPane.showMessageDialog(null, "¡No selecciono una opción válida entre 1 y 3!");
                 break;

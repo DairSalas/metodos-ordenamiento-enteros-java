@@ -134,9 +134,12 @@ public class MetodosOrdenamiento {
                 cambios = false;
                 for (int i = salto; i < getNumElementos(); i++) { // se da una pasada
                     if (getVectorDatos(i-salto) > getVectorDatos(i)) {
-                        aux = getVectorDatos(i);
+                        /*aux = getVectorDatos(i);
                         setVectorDatos(i, getVectorDatos(i-salto));
-                        setVectorDatos(i-salto, aux);
+                        setVectorDatos(i-salto, aux);*/
+                        
+                        // Este sí
+                        cambiar(i, i-salto);
                         cambios = true;
                     }
                 }
@@ -150,7 +153,7 @@ public class MetodosOrdenamiento {
         //int pivote = A[izq]; // tomamos primer elemento como pivote
         int i = izq; // i realiza la búsqueda de izquierda a derecha
         int j = der; // j realiza la búsqueda de derecha a izquierda
-        int aux;
+        //int aux;
 
         while (i < j) { // mientras no se crucen las búsquedas
             while (getVectorDatos(i) <= pivote && i < j) {
@@ -162,12 +165,15 @@ public class MetodosOrdenamiento {
                 j--;         // busca elemento menor que pivote
             }
             if (i < j) {                      // si no se han cruzado                      
-                aux = getVectorDatos(i);                  // los intercambia
+                /*aux = getVectorDatos(i);                  // los intercambia
                 //aux = A[i];                  // los intercambia
                 setVectorDatos(i, getVectorDatos(j));
                 //A[i] = A[j];
                 setVectorDatos(j, aux);
-                //A[j] = aux;
+                //A[j] = aux;*/
+                
+                // Este sí
+                cambiar(i, j);
             }
         }
         
